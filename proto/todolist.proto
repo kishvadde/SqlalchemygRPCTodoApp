@@ -1,0 +1,42 @@
+syntax = 'proto3';
+
+package todo.protobuf;
+//import "google/protobuf/empty.proto";
+
+
+
+service TodoService{
+    rpc  GetAllTodos(EmptyRequest) returns (TodoList);
+    rpc  GetTodo(Todo) returns (Todo);
+    rpc  CreateTodo(Todo) returns (OperationTodoResponse);
+    rpc  DeleteTodo(Todo) returns (OperationTodoResponse);
+    rpc  UpdateTodo(Todo) returns (OperationTodoResponse);
+}
+
+
+message EmptyRequest {}
+
+message Todo {
+   int32 id  = 1;
+   string name  = 2;
+   bool is_completed = 3;
+   bool is_active = 4;
+}
+
+message TodoList {
+  repeated Todo todos = 1;
+}
+
+message OperationTodoResponse {
+
+    enum OP_Status {
+        UNKNOWN = 0;
+        CREATED  = 1;
+        DELETED = 2;
+        UPDATED = 3;
+        ERROR = 4;
+    }
+
+    Todo todo = 1;
+    OP_Status op_status = 2;
+}
