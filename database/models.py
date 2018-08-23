@@ -7,7 +7,7 @@ class Todo(Base):
     
     __tablename__ = "todolist"
     id = Column('id',Integer, primary_key=True)
-    name = Column('name',String, unique=True, nullable=False)
+    name = Column('name',String(100), unique=True, nullable=False)
     is_completed = Column('is_completed', Boolean, nullable=False, default=False)
     is_active = Column('is_active', Boolean, nullable=False, default=True)
 

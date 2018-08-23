@@ -16,7 +16,7 @@ print(stub.GetAllTodos(EmptyRequest()))
 print("-----------  GET TODO -------------")
 todo = stub.GetTodo(Todo(id=2))
 print(todo)
-todo.is_completed = False
+todo.is_completed = True
 resp = stub.UpdateTodo(todo)
 
 print("--------- TODO updated -----------")

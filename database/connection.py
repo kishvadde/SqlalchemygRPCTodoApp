@@ -6,7 +6,8 @@ from .models import Todo
 
 @contextmanager
 def db_session():
-    engine  = create_engine('sqlite:///todolist.sqlite')
+   
+    engine  = create_engine('mysql+pymysql://root:@127.0.0.1/todolistdb')
     session = None
     if engine:
         session = sessionmaker(bind=engine)()
